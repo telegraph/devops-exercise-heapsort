@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 public class HeapTest {
 
     private static final int NUMBER_RANDOM_TESTS = 1000;
-    private static final int DATA_SIZE = 1000;
+    private static final int DATA_SIZE = 100;
 
     private Integer[] randomArray(int size) {
 
@@ -27,7 +27,7 @@ public class HeapTest {
     }
 
     private static void assertOrdered(Integer[] values) {
-        for (int i = 0; i < values.length - 2; i++){
+        for (int i = 0; i < values.length - 1; i++){
             assertTrue(values[i] <= values[i + 1]);
         }
     }
@@ -53,14 +53,14 @@ public class HeapTest {
     @Test
     public void heapSortTest(){
         for (int i = 0; i < NUMBER_RANDOM_TESTS; i++){
-            System.out.println("test > " + i);
+            System.out.println(String.format("test > %s", i));
             Integer[] values = randomArray(DATA_SIZE);
             System.out.println(Arrays.toString(values));
             List<Integer> sorted = Heap.heapSort(values);
             values = sorted.toArray(new Integer[sorted.size()]);
             System.out.println(Arrays.toString(values));
             assertOrdered(values);
-            System.out.println("test > " + i + " ok");
+            System.out.println(String.format("test > %s ok", i));
         }
 
     }
